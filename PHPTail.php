@@ -135,17 +135,17 @@ class PHPTail {
 				<script type="text/javascript">
 					/* <![CDATA[ */
 					//Last know size of the file
-					lastSize = <?php echo filesize($this->log); ?>;
+					var lastSize = <?php echo filesize($this->log); ?>;
 					//Grep keyword
-					grep = "";
+					var grep = "";
 					//Should the Grep be inverted?
-					invert = 0;
+					var invert = 0;
 					//Last known document height
-					documentHeight = 0; 
+					var documentHeight = 0; 
 					//Last known scroll position
-					scrollPosition = 0; 
+					var scrollPosition = 0; 
 					//Should we scroll to the bottom?
-					scroll = true;
+					var scroll = true;
 					$(document).ready(function(){
 
 						// Setup the settings dialog
@@ -233,6 +233,7 @@ class PHPTail {
 					}
 					//This function queries the server for updates.
 					function updateLog() {
+						$.ajaxSetup ({cache: false});
 						$.getJSON( '<?php echo $this->getRefreshFileName(); ?>?ajax=1&lastsize='+lastSize + '&grep='+grep + '&invert='+invert, function(data) {
 							lastSize = data.size;
 							$.each(data.data, function(key, value) { 
