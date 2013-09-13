@@ -7,7 +7,7 @@ require 'PHPTail.php';
  * Initilize a new instance of PHPTail
  * @var PHPTail
  */
-$tail = new PHPTail("/home/users/webrichard/tmp/debug.txt");
+$tail = new PHPTail("../tmp/debug.log");
 
 $tail->setRefreshFileName('index.php') ;
 /**
